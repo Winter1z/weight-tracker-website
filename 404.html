@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+
+<title>Page not found — Weight Arc</title>
+<meta name="description" content="The requested Weight Arc page could not be found.">
+<meta name="theme-color" content="#ffffff">
+
+<!--
+  IMPORTANT — this page uses ABSOLUTE paths that include the repository
+  subpath, unlike every other page on the site which uses relative paths.
+
+  GitHub Pages serves this single file for ANY missing URL under the project
+  site, for example /weight-tracker-website/some/deep/typo/. The browser's base
+  URL is therefore unpredictable, so relative paths such as ../assets/… would
+  resolve differently on every 404 and break the stylesheet and links.
+
+  If the repository is ever renamed, update the /weight-tracker-website/ prefix
+  in this file. It is the only file that hardcodes it in its paths.
+-->
+<link rel="icon" href="/weight-tracker-website/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/weight-tracker-website/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/weight-tracker-website/assets/images/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/weight-tracker-website/assets/css/styles.css">
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("weight-arc-theme");
+      if (t === "light" || t === "dark") {
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "dark" ? "#0a0c0b" : "#ffffff");
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/weight-tracker-website/" aria-label="Weight Arc home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="presentation">
+          <path class="mark-line" d="M6 25 C11 25 11 16 16 16 S21 22 26 18 S30 10 34 11"></path>
+          <circle class="mark-dot" cx="34" cy="11" r="2.7"></circle>
+        </svg>
+      </span>
+      <span>Weight Arc</span>
+    </a>
+
+    <div class="header-actions">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/weight-tracker-website/">Home</a>
+        <a href="/weight-tracker-website/#features">Features</a>
+        <a href="/weight-tracker-website/support/">Support</a>
+        <a href="/weight-tracker-website/privacy/">Privacy</a>
+        <a href="/weight-tracker-website/terms/">Terms</a>
+      </nav>
+      <button class="theme-toggle" type="button" hidden aria-pressed="false" aria-label="Switch to dark appearance">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.4v2.2M12 19.4v2.2M4.2 12H2M22 12h-2.2M5.9 5.9 4.4 4.4M19.6 19.6l-1.5-1.5M18.1 5.9l1.5-1.5M4.4 19.6l1.5-1.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="prose">
+  <p class="eyebrow">404</p>
+  <h1>That page is not here.</h1>
+  <p class="lede">
+    The address may be mistyped, or the page may have moved. Everything on the
+    site is one tap away below.
+  </p>
+
+  <div class="hero-actions">
+    <a class="button primary" href="/weight-tracker-website/">Go to the homepage</a>
+    <a class="button" href="/weight-tracker-website/support/">Get support</a>
+  </div>
+
+  <div class="note" style="margin-top: 40px;">
+    <p>
+      Looking for something specific? Try the
+      <a href="/weight-tracker-website/support/">support page</a>, the
+      <a href="/weight-tracker-website/privacy/">Privacy Policy</a>, or the
+      <a href="/weight-tracker-website/terms/">Terms of Use</a>.
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- CONFIG: appName, developerName, copyrightYear -->
+    <p class="copyright">
+      <span class="footer-brand">Weight Arc</span> &middot; &copy; 2026 Nikolas.
+    </p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/weight-tracker-website/">Home</a>
+      <a href="/weight-tracker-website/support/">Support</a>
+      <a href="/weight-tracker-website/privacy/">Privacy Policy</a>
+      <a href="/weight-tracker-website/terms/">Terms of Use</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/weight-tracker-website/assets/js/site.js" defer></script>
+</body>
+</html>

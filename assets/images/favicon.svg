@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="Weight Arc">
+  <rect width="40" height="40" rx="9" fill="#0a0c0b"/>
+  <path d="M6 25 C11 25 11 16 16 16 S21 22 26 18 S30 10 34 11"
+        fill="none" stroke="#5fd68a" stroke-width="2.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="34" cy="11" r="2.9" fill="#5fd68a"/>
+</svg>

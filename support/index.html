@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Support — Weight Arc</title>
+<meta name="description" content="Get help with Weight Arc: logging and editing weigh-ins, goal weight, trends and projections, Premium, Apple subscriptions, account deletion, and reporting a bug.">
+
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://winter1z.github.io/weight-tracker-website/support/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Weight Arc">
+<meta property="og:title" content="Support — Weight Arc">
+<meta property="og:description" content="Help with logging, goals, trends, Premium, subscriptions, account deletion, and reporting a bug.">
+<meta property="og:url" content="https://winter1z.github.io/weight-tracker-website/support/">
+<meta property="og:image" content="https://winter1z.github.io/weight-tracker-website/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weight Arc — a rising trend-line mark on a dark background.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Support — Weight Arc">
+<meta name="twitter:description" content="Help with logging, goals, trends, Premium, subscriptions, account deletion, and reporting a bug.">
+<meta name="twitter:image" content="https://winter1z.github.io/weight-tracker-website/assets/images/og-image.png">
+
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("weight-arc-theme");
+      if (t === "light" || t === "dark") {
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "dark" ? "#0a0c0b" : "#ffffff");
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Weight Arc home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="presentation">
+          <path class="mark-line" d="M6 25 C11 25 11 16 16 16 S21 22 26 18 S30 10 34 11"></path>
+          <circle class="mark-dot" cx="34" cy="11" r="2.7"></circle>
+        </svg>
+      </span>
+      <span>Weight Arc</span>
+    </a>
+
+    <div class="header-actions">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../">Home</a>
+        <a href="../#features">Features</a>
+        <a href="./" aria-current="page">Support</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </nav>
+      <button class="theme-toggle" type="button" hidden aria-pressed="false" aria-label="Switch to dark appearance">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.4v2.2M12 19.4v2.2M4.2 12H2M22 12h-2.2M5.9 5.9 4.4 4.4M19.6 19.6l-1.5-1.5M18.1 5.9l1.5-1.5M4.4 19.6l1.5-1.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="support-hero" aria-labelledby="support-title">
+    <div>
+      <p class="eyebrow">Support</p>
+      <h1 id="support-title">Weight Arc Support</h1>
+      <p class="lede">
+        Answers for logging, goals, trends, Premium, subscriptions and your
+        account. If the steps below do not solve it, email support and include a
+        few device details so the problem can be investigated properly.
+      </p>
+    </div>
+
+    <!-- CONFIG: supportEmail — also appears in the contact section and footer -->
+    <aside class="contact-card" aria-label="Support contact">
+      <p class="eyebrow">Email support</p>
+      <a class="contact-address" href="mailto:nikolas02@live.dk?subject=Weight%20Arc%20Support%20Request">nikolas02@live.dk</a>
+      <p>
+        Use the subject &ldquo;Weight Arc Support Request&rdquo; so your message
+        is easy to identify. Replies come from one person, so please allow a few
+        days.
+      </p>
+    </aside>
+  </section>
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="section-heading">
+      <p class="eyebrow">Quick answers</p>
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <p>These steps use the labels currently shown in the app.</p>
+    </div>
+
+    <div class="faq-grid">
+
+      <details>
+        <summary>How do I log a weight entry?</summary>
+        <ol>
+          <li>Tap the <strong>+</strong> button in the centre of the bottom tab bar.</li>
+          <li>Enter your weight using the keypad.</li>
+          <li>Check the date shown on the date wheel.</li>
+          <li>Tap <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          The keypad accepts up to three digits and one decimal, and uses
+          whichever unit you have selected under Settings &rarr; Preferences.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I add a weigh-in from an earlier date?</summary>
+        <ol>
+          <li>Tap <strong>+</strong> in the bottom tab bar.</li>
+          <li>Enter the weight.</li>
+          <li>Scroll the day, month and year wheels to the date you want.</li>
+          <li>Tap <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          Future dates cannot be selected. The app keeps one entry per day, so
+          saving onto a date that already has an entry replaces that entry.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I edit or delete an entry?</summary>
+        <p>
+          Open the <strong>Logbook</strong> tab to see your full history.
+        </p>
+        <ul>
+          <li>
+            <strong>To edit:</strong> tap the entry, change the weight or the
+            date, then tap <strong>Save</strong>.
+          </li>
+          <li>
+            <strong>To delete:</strong> tap the trash icon beside the entry and
+            confirm.
+          </li>
+        </ul>
+        <p>
+          If you move an entry onto a date that already has one, the app will
+          tell you a weight entry already exists for that date. Delete or edit
+          the existing entry first.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I set or change my goal weight?</summary>
+        <ol>
+          <li>Open the <strong>Settings</strong> tab.</li>
+          <li>Tap <strong>Goal</strong>.</li>
+          <li>Enter your new target weight and save.</li>
+        </ol>
+        <p>
+          Clear the goal field and save if you no longer want to track a target.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I change units or switch between dark and light?</summary>
+        <ol>
+          <li>Open the <strong>Settings</strong> tab.</li>
+          <li>Tap <strong>Preferences</strong>.</li>
+          <li>Choose your appearance and your metric or imperial units.</li>
+        </ol>
+        <p>
+          Units affect display only — your history is preserved and converted,
+          not rewritten.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I add my height, age or body fat percentage?</summary>
+        <ol>
+          <li>Open the <strong>Settings</strong> tab.</li>
+          <li>Tap <strong>Body Metrics</strong>.</li>
+          <li>Enter your height, body fat percentage and age, then save.</li>
+        </ol>
+        <p>
+          These values are what make the BMI and FFMI insights possible. Without
+          them, those cards cannot be calculated.
+        </p>
+      </details>
+
+      <details>
+        <summary>How is the trend calculated, and how should I read predictions?</summary>
+        <p>
+          Your trend is a weighted moving average of your logged weights, which
+          gives recent weigh-ins more influence while still smoothing out
+          day-to-day swings from water, food and timing. It is designed to show
+          the direction underneath the noise rather than the raw number on any
+          single morning.
+        </p>
+        <p>
+          Weekly direction and projections only appear once there are enough
+          entries spread over enough time for the estimate to mean anything.
+          A projection extends your recent trend forward at its current rate —
+          it assumes nothing changes, which rarely holds exactly. Treat it as an
+          informational estimate, not a guarantee, and not medical advice.
+        </p>
+      </details>
+
+      <details>
+        <summary>What is included in Premium?</summary>
+        <p>
+          Premium unlocks the <strong>Insights</strong> tab: trend analysis, BMI
+          and FFMI insights, expected weight development, and your projected goal
+          date.
+        </p>
+        <p>
+          Logging weight, viewing your trend on the Weight tab, the full Logbook,
+          and goal tracking are available without a subscription.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I restore a previous purchase?</summary>
+        <ol>
+          <li>
+            Make sure the device is signed in with the same Apple Account that
+            made the original purchase.
+          </li>
+          <li>
+            Open <strong>Settings</strong> and tap
+            <strong>Upgrade to Premium</strong>, or open the
+            <strong>Insights</strong> tab and tap <strong>Unlock Insights</strong>.
+          </li>
+          <li>
+            On the purchase screen that appears, choose the restore option.
+          </li>
+        </ol>
+        <p>
+          Restoring re-checks your Apple Account for an active subscription; it
+          does not charge you again.
+        </p>
+      </details>
+
+      <details>
+        <summary>Premium did not unlock after I paid</summary>
+        <ul>
+          <li>
+            Check that the device is online and signed in with the Apple Account
+            used for the purchase.
+          </li>
+          <li>
+            Open <strong>Settings</strong>. If the Premium row shows
+            &ldquo;Subscription status unavailable&rdquo;, tap it to retry the
+            check.
+          </li>
+          <li>Open the purchase screen again and use the restore option.</li>
+          <li>Close the app fully and reopen it.</li>
+        </ul>
+        <p>
+          If it is still locked, email support with the approximate date and time
+          of purchase and the Apple Account region. Never send passwords or full
+          payment card details.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I manage or cancel my subscription?</summary>
+        <p>
+          Subscriptions bought through the App Store are managed by Apple, not by
+          this app. Cancellation has to be done through your Apple Account:
+        </p>
+        <ol>
+          <li>Open the iOS <strong>Settings</strong> app.</li>
+          <li>Tap your name at the top, then <strong>Subscriptions</strong>.</li>
+          <li>Select the Weight Arc subscription.</li>
+          <li>Choose the option to manage or cancel it.</li>
+        </ol>
+        <p>
+          You can also reach this screen from inside the app: when Premium is
+          active, tapping the <strong>Premium</strong> row in Settings opens your
+          Apple subscription settings.
+        </p>
+        <p>
+          Cancelling stops the next renewal; access continues until the end of the
+          period you have already paid for. Refunds are handled by Apple under
+          Apple's own policies — the developer cannot cancel or refund an Apple
+          subscription on your behalf.
+        </p>
+      </details>
+
+      <details>
+        <summary>I forgot my password</summary>
+        <ol>
+          <li>On the sign-in screen, tap the forgotten-password link.</li>
+          <li>Enter your email address to receive a 6-digit code.</li>
+          <li>Enter the code and choose a new password of at least 6 characters.</li>
+        </ol>
+        <p>
+          If the email does not arrive within a few minutes, check your spam
+          folder before requesting another code.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I delete my account and all my data?</summary>
+        <ol>
+          <li>Open the <strong>Settings</strong> tab.</li>
+          <li>Tap <strong>Account</strong>.</li>
+          <li>Under <strong>Danger Zone</strong>, tap <strong>Delete Account</strong>.</li>
+          <li>Confirm twice.</li>
+        </ol>
+        <p>
+          The app asks for confirmation twice because deletion is permanent. It
+          removes your account, profile and every weight entry, and cannot be
+          undone.
+        </p>
+        <p>
+          If you can no longer open the app, email support from the address
+          connected to your account and ask for the account to be deleted.
+        </p>
+        <p>
+          Deleting your account does not cancel an Apple subscription — cancel
+          that separately in your Apple Account settings.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I report a bug?</summary>
+        <p>Email support and include as much of the following as you can:</p>
+        <ul>
+          <li>The app version.</li>
+          <li>Your iOS version.</li>
+          <li>Your iPhone model.</li>
+          <li>What you expected to happen.</li>
+          <li>What happened instead.</li>
+          <li>The exact steps that reproduce it.</li>
+          <li>
+            A screenshot or screen recording, if it helps and does not show
+            anything you would rather keep private.
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Where do I find the legal information?</summary>
+        <p>
+          The <a href="../privacy/">Privacy Policy</a> explains what information
+          is collected and how it is handled. The
+          <a href="../terms/">Terms of Use</a> cover accounts, subscriptions and
+          the conditions for using the app.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <section class="contact-section" aria-labelledby="contact-title">
+    <p class="eyebrow">Still need help?</p>
+    <h2 id="contact-title">Contact support</h2>
+    <p>
+      Include your app version, iOS version, device model, a clear description of
+      the issue, and the steps you have already tried. For purchase problems, add
+      the approximate purchase date and your Apple Account region — but never
+      send passwords or full payment card details.
+    </p>
+    <div class="hero-actions">
+      <!-- CONFIG: supportEmail -->
+      <a class="button primary" href="mailto:nikolas02@live.dk?subject=Weight%20Arc%20Support%20Request">Email nikolas02@live.dk</a>
+      <a class="button" href="../privacy/">Privacy Policy</a>
+      <a class="button" href="../terms/">Terms of Use</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- CONFIG: appName, developerName, copyrightYear, supportEmail -->
+    <p class="copyright">
+      <span class="footer-brand">Weight Arc</span> &middot; &copy; 2026 Nikolas.<br>
+      Contact: <a href="mailto:nikolas02@live.dk?subject=Weight%20Arc%20Support%20Request">nikolas02@live.dk</a>
+    </p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="../">Home</a>
+      <a href="./">Support</a>
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms of Use</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

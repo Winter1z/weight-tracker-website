@@ -1,0 +1,8 @@
+# OS / editor cruft — this repo has no build step and no dependencies,
+# so there is nothing else to ignore.
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/

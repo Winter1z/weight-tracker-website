@@ -1,0 +1,58 @@
+{
+  "_comment": [
+    "PUBLIC CONFIGURATION — single source of truth for editable site values.",
+    "",
+    "This is a static site with no build step, so these values are ALSO written",
+    "directly into the HTML files. This file is the reference list: when you",
+    "change a value here, update the matching HTML occurrences listed under",
+    "'appearsIn'. Every place a value appears is marked in the HTML with an",
+    "HTML comment containing the word CONFIG, so you can find them by searching",
+    "the repository for: CONFIG",
+    "",
+    "Legal text is NEVER rendered by JavaScript. The privacy and terms pages are",
+    "plain HTML and remain fully readable with JavaScript disabled."
+  ],
+
+  "appName": "Weight Arc",
+  "appStoreTitle": "Weight Arc: Weight Tracker",
+  "developerName": "Nikolas",
+  "supportEmail": "nikolas02@live.dk",
+  "supportSubject": "Weight Arc Support Request",
+  "copyrightYear": "2026",
+  "baseUrl": "https://winter1z.github.io/weight-tracker-website/",
+
+  "appStoreUrl": null,
+  "_appStoreUrlNote": [
+    "No public App Store listing exists yet, so the homepage shows a",
+    "non-clickable 'Coming soon on the App Store' label instead of a fake link.",
+    "To add the real link later, see the 'Adding the App Store link' section of",
+    "README.md — it is a single edit in index.html."
+  ],
+
+  "privacyEffectiveDate": "June 12, 2026",
+  "termsEffectiveDate": "June 12, 2026",
+
+  "appearsIn": {
+    "appName": ["index.html", "support/index.html", "privacy/index.html", "terms/index.html", "404.html"],
+    "supportEmail": ["index.html", "support/index.html", "privacy/index.html", "terms/index.html"],
+    "developerName": ["index.html", "support/index.html", "privacy/index.html", "terms/index.html", "404.html"],
+    "copyrightYear": ["index.html", "support/index.html", "privacy/index.html", "terms/index.html"],
+    "appStoreUrl": ["index.html"],
+    "baseUrl": ["all pages: <link rel=\"canonical\"> and og:url", "sitemap.xml"],
+    "privacyEffectiveDate": ["privacy/index.html"],
+    "termsEffectiveDate": ["terms/index.html"]
+  },
+
+  "screenshots": {
+    "_note": [
+      "No app screenshots exist in the app project yet, so the homepage renders",
+      "labelled placeholder frames rather than broken <img> elements.",
+      "Drop real PNG files at these paths and follow README.md to swap them in."
+    ],
+    "expected": [
+      "assets/images/home-screen.png",
+      "assets/images/insights-screen.png",
+      "assets/images/logbook-screen.png"
+    ]
+  }
+}

@@ -1,0 +1,1161 @@
+/* ==========================================================================
+   Weight Arc — shared design system
+   --------------------------------------------------------------------------
+   Colour tokens, radii and spacing are taken from the app's own theme file
+   (constants/theme.ts) so the site reads as the same product as the app.
+
+   Theming strategy:
+     :root                      -> light palette (default)
+     prefers-color-scheme: dark -> dark palette, unless the visitor has
+                                   explicitly chosen light via the toggle
+     [data-theme="…"]           -> explicit visitor choice, always wins
+   The site is fully styled and readable with JavaScript disabled; the toggle
+   is progressive enhancement only.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Light palette — app LightColors: white + warm sand, Nordic pine accent */
+  --bg: #ffffff;
+  --surface: #f6f1e7;          /* app card: light sand/beige */
+  --surface-raised: #eef3ef;
+  --accent: #3f6b54;           /* app accent: nordic pine */
+  --accent-hover: #315842;
+  --accent-soft: #e3eae4;      /* app accentMuted */
+  --accent-line: #5c8a70;      /* app accentLight: chart line */
+  --on-accent: #ffffff;
+  --sage: #748c7c;
+  --text: #1a1f1b;
+  --muted: #5c665e;            /* app textSecondary */
+  --quiet: #6b756d;
+  --border: #e7e1d4;           /* app border */
+  --border-strong: #d6cfbf;
+  --warning: #c2702e;
+  --glow: rgba(63, 107, 84, 0.14);
+  --shadow: 0 16px 40px rgba(45, 55, 48, 0.09);
+  --shadow-lift: 0 22px 55px rgba(45, 55, 48, 0.13);
+
+  /* Radii — app Radius scale (8 / 12 / 16 / 24) */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Spacing — app Spacing scale (4 / 8 / 16 / 24 / 32 / 48) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  --page: 1120px;
+  --prose: 760px;
+
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Dark palette — app DarkColors: near-black with a hint of green, mint accent */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a0c0b;
+    --surface: #121613;
+    --surface-raised: #172019;
+    --accent: #5fd68a;
+    --accent-hover: #78e39c;
+    --accent-soft: #16271d;
+    --accent-line: #5fd68a;
+    --on-accent: #07100a;
+    --sage: #9bc4a8;
+    --text: #f2f4f2;
+    --muted: #9aa49c;
+    --quiet: #8a948c;
+    --border: #263029;
+    --border-strong: #334036;
+    --warning: #e8975f;
+    --glow: rgba(95, 214, 138, 0.28);
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+    --shadow-lift: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0c0b;
+  --surface: #121613;
+  --surface-raised: #172019;
+  --accent: #5fd68a;
+  --accent-hover: #78e39c;
+  --accent-soft: #16271d;
+  --accent-line: #5fd68a;
+  --on-accent: #07100a;
+  --sage: #9bc4a8;
+  --text: #f2f4f2;
+  --muted: #9aa49c;
+  --quiet: #8a948c;
+  --border: #263029;
+  --border-strong: #334036;
+  --warning: #e8975f;
+  --glow: rgba(95, 214, 138, 0.28);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+  --shadow-lift: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -10%, var(--glow), transparent 34rem),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--sage);
+}
+
+/* Visible keyboard focus on every interactive element */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 50;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+
+.skip-link:focus {
+  color: var(--on-accent);
+  transform: translateY(0);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography
+   -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 4.1rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  margin: 2.6rem 0 0.8rem;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 680;
+  letter-spacing: -0.022em;
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+  font-weight: 720;
+  letter-spacing: -0.012em;
+}
+
+p {
+  margin: 0.8rem 0;
+}
+
+ul,
+ol {
+  padding-left: 1.35rem;
+}
+
+li + li {
+  margin-top: 0.45rem;
+}
+
+strong {
+  color: var(--text);
+  font-weight: 680;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lede {
+  max-width: 62ch;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+}
+
+.updated {
+  color: var(--quiet);
+  font-size: 0.92rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header & navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .site-header {
+    background: var(--bg);
+  }
+}
+
+.header-inner {
+  width: min(calc(100% - 32px), var(--page));
+  min-height: 68px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--accent-soft);
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+
+.brand-mark svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mark-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mark-dot {
+  fill: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Scrolling pill nav — works with zero JavaScript on every screen size */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.site-nav a {
+  padding: 7px 11px;
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  font-size: 0.87rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.theme-toggle {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle[hidden] {
+  display: none;
+}
+
+/* Only one of the two icons is shown, depending on the resolved theme */
+.icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .icon-moon {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Layout
+   -------------------------------------------------------------------------- */
+
+main {
+  width: min(calc(100% - 32px), var(--page));
+  margin: 0 auto;
+  padding: 56px 0 80px;
+}
+
+main.prose {
+  width: min(calc(100% - 32px), var(--prose));
+}
+
+.section {
+  padding-top: clamp(56px, 9vw, 92px);
+}
+
+.section-heading {
+  max-width: 66ch;
+}
+
+.section-heading h2 {
+  margin-top: 0;
+  font-size: clamp(1.85rem, 4.5vw, 2.9rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Buttons
+   -------------------------------------------------------------------------- */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  border-color: var(--sage);
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button.primary:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+/*
+  Non-clickable App Store status label. The app has no public App Store URL
+  yet, so the site never renders a fake store link.
+  CONFIG: when the listing goes live, replace the `.store-badge` span in
+  index.html with a real <a class="button primary"> — see README.
+*/
+.store-badge {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 20px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.store-badge svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   7. Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(36px, 6vw, 80px);
+}
+
+.hero-copy {
+  padding: 8px 0;
+}
+
+.hero-app-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--accent-soft);
+  box-shadow: var(--shadow);
+}
+
+.hero-app-icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+/* Illustrative trend card — clearly labelled, never presented as a screenshot */
+.signal-card {
+  position: relative;
+  min-height: 352px;
+  overflow: hidden;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(150deg, var(--surface-raised), var(--surface));
+  box-shadow: var(--shadow-lift);
+}
+
+.signal-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -45% 20%;
+  height: 270px;
+  border-radius: 50%;
+  background: var(--glow);
+  filter: blur(45px);
+}
+
+.signal-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+}
+
+.signal-value {
+  margin-top: 6px;
+  font-size: clamp(3.4rem, 10vw, 5.6rem);
+  line-height: 1;
+  font-weight: 560;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.signal-unit {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.signal-trend {
+  margin-top: 10px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.signal-chart {
+  position: absolute;
+  z-index: 1;
+  inset: auto 22px 26px;
+  /* The gradient stops use currentColor, which resolves against the <svg>
+     itself — the gradient lives in <defs> and does not inherit from <g>. */
+  color: var(--accent-line);
+}
+
+.signal-chart .line {
+  fill: none;
+  stroke: var(--accent-line);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.signal-chart .area {
+  fill: url(#signal-fill);
+  stroke: none;
+}
+
+.signal-chart .point {
+  fill: var(--accent-line);
+  stroke: var(--surface);
+  stroke-width: 3;
+}
+
+.figure-note {
+  margin: 12px 0 0;
+  color: var(--quiet);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   8. Cards & grids
+   -------------------------------------------------------------------------- */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.feature {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.feature-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  margin-bottom: 20px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+}
+
+.feature-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.feature p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Steps */
+.step-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 32px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.step-index {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.step p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* Screenshot placeholders — no <img> is rendered until real files exist,
+   so the published page never shows a broken image. */
+.shot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.shot {
+  display: flex;
+  width: 100%;
+  max-width: 280px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  /* Deliberately not the 390:844 phone ratio — these are placeholders, and
+     full-height phone frames would leave a very long empty page on mobile.
+     Real screenshots use .shot-image and keep their own aspect ratio. */
+  aspect-ratio: 3 / 4;
+  padding: 20px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 34px;
+  background:
+    linear-gradient(var(--glow) 1px, transparent 1px),
+    linear-gradient(90deg, var(--glow) 1px, transparent 1px),
+    var(--surface);
+  background-size: 28px 28px;
+  text-align: center;
+}
+
+.shot-inner {
+  max-width: 100%;
+}
+
+.shot-screen {
+  display: block;
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.shot-file {
+  display: block;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+  color: var(--quiet);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+}
+
+/* Real screenshots, once dropped in, use this class instead of .shot */
+.shot-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 34px;
+  box-shadow: var(--shadow-lift);
+}
+
+.note {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.note p {
+  margin: 0;
+}
+
+.note p + p {
+  margin-top: 0.6rem;
+}
+
+/* Split callouts */
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.callout {
+  padding: clamp(24px, 5vw, 40px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.callout h2 {
+  margin-top: 0;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.callout p {
+  color: var(--muted);
+}
+
+.callout ul {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.callout .button {
+  margin-top: 12px;
+  background: var(--bg);
+}
+
+/* --------------------------------------------------------------------------
+   9. Prose pages (privacy / terms)
+   -------------------------------------------------------------------------- */
+
+.prose-body {
+  margin-top: 32px;
+  padding: clamp(22px, 5vw, 44px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.prose-body > h2:first-child {
+  margin-top: 0;
+}
+
+.prose-body p,
+.prose-body li {
+  color: var(--muted);
+}
+
+.prose-body h2 {
+  color: var(--text);
+}
+
+.review-note {
+  margin: 24px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--warning);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.89rem;
+}
+
+.review-note strong {
+  color: var(--warning);
+}
+
+/* --------------------------------------------------------------------------
+   10. Support page
+   -------------------------------------------------------------------------- */
+
+.support-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 32px;
+}
+
+.contact-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.contact-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-address {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 720;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+details {
+  padding: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+details[open] {
+  border-color: var(--border-strong);
+}
+
+summary {
+  padding: 17px 8px 17px 0;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+summary::marker {
+  color: var(--accent);
+}
+
+details p,
+details ol,
+details ul {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+details > :last-child {
+  margin-bottom: 20px;
+}
+
+.contact-section {
+  margin-top: 64px;
+  padding: clamp(24px, 6vw, 46px);
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius-xl);
+  background: var(--accent-soft);
+}
+
+.contact-section h2 {
+  margin-top: 0;
+}
+
+.contact-section p {
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+.contact-section .button {
+  background: var(--bg);
+}
+
+.contact-section .button.primary {
+  background: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--quiet);
+}
+
+.footer-inner {
+  width: min(calc(100% - 32px), var(--page));
+  margin: 0 auto;
+  padding: 32px 0 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.footer-brand {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive — mobile first, widen from here
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .header-inner {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .site-header {
+    position: static;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+  }
+
+  .site-nav {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  main {
+    padding-top: 40px;
+  }
+}
+
+@media (min-width: 640px) {
+  .feature-grid,
+  .step-grid,
+  .shot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (min-width: 900px) {
+  main {
+    padding-top: 64px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+    min-height: 480px;
+  }
+
+  .support-hero {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  .feature-grid,
+  .step-grid,
+  .shot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .faq-grid,
+  .split-section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Print
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .theme-toggle {
+    display: none;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .prose-body {
+    border: 0;
+    box-shadow: none;
+  }
+}
