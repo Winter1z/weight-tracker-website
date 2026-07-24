@@ -107,7 +107,7 @@ Current values:
 | App name | Weight Arc |
 | App Store title | Weight Arc: Weight Tracker |
 | Developer | Nikolas |
-| Support email | nikolas02@live.dk |
+| Support email | valdivian313@outlook.com |
 | Copyright year | 2026 |
 | Base URL | `https://winter1z.github.io/weight-tracker-website/` |
 | App Store URL | *none yet* |
