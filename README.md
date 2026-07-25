@@ -5,7 +5,7 @@ fill the four App Store Connect URL fields:
 
 | App Store Connect field | URL |
 | --- | --- |
-| Marketing URL | `https://winter1z.github.io/weight-tracker-website/` |
+| Marketing URL | `https://winter1z.github.io/weight-tracker-website/marketing/` |
 | Support URL | `https://winter1z.github.io/weight-tracker-website/support/` |
 | Privacy Policy URL | `https://winter1z.github.io/weight-tracker-website/privacy/` |
 | Terms of Use (EULA) URL | `https://winter1z.github.io/weight-tracker-website/terms/` |
@@ -18,7 +18,8 @@ trackers and no cookies.
 
 | Route | File | Purpose |
 | --- | --- | --- |
-| `/` | `index.html` | Marketing landing page |
+| `/` | `index.html` | Landing page |
+| `/marketing/` | `marketing/index.html` | Product overview — the App Store **Marketing URL** |
 | `/support/` | `support/index.html` | Support page and FAQ |
 | `/privacy/` | `privacy/index.html` | Privacy Policy |
 | `/terms/` | `terms/index.html` | Terms of Use |
@@ -27,7 +28,8 @@ trackers and no cookies.
 ## Repository layout
 
 ```
-index.html               Marketing landing page
+index.html               Landing page
+marketing/index.html     Product overview (App Store Marketing URL)
 support/index.html       Support page
 privacy/index.html       Privacy Policy
 terms/index.html         Terms of Use
