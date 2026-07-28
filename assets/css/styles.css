@@ -891,21 +891,6 @@ main.prose {
   color: var(--text);
 }
 
-.review-note {
-  margin: 24px 0 0;
-  padding: 16px 18px;
-  border: 1px solid var(--border-strong);
-  border-left: 3px solid var(--warning);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  color: var(--muted);
-  font-size: 0.89rem;
-}
-
-.review-note strong {
-  color: var(--warning);
-}
-
 /* --------------------------------------------------------------------------
    10. Support page
    -------------------------------------------------------------------------- */

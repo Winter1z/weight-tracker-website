@@ -206,11 +206,12 @@ it was modified, committed or pushed while this site was built, and no source
 code, environment file, API key, Supabase credential or Apple credential from it
 has been copied into this public repository.
 
-The privacy and terms wording is carried over from the legal pages the app
-already publishes (its `legal` Supabase edge function), with only the product
-name updated. Both pages carry a visible review note listing the points that
-still need a decision before the App Store submission — remove those notes once
-they are settled.
+The privacy and terms wording originated in the legal pages the app publishes
+through its `legal` Supabase edge function. Both pages have since been reviewed
+and extended here — privacy gained a Children section and the confirmed storage
+region, terms gained an intellectual-property clause and a reference to Apple's
+standard EULA — so **this site is now the authoritative wording**, and the edge
+function has been updated to match it.
 
 ## Licence
 
